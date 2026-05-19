@@ -6,7 +6,7 @@ import * as knxAccess from './knxaccess';
 import { validateAddressText } from './groupaddress';
 import type { PluginContext } from '../types/plugin-context';
 import type { ServiceKNX } from './service-knx';
-import type { Characteristic } from 'homebridge';
+import type { Characteristic, WithUUID } from 'homebridge';
 
 interface GAEntry {
   address: string;
@@ -43,11 +43,8 @@ export class CharacteristicKNX {
       const CharType = this.availableCharacteristics[type as keyof typeof this.availableCharacteristics];
       if (!CharType) throw new Error(`CONFIG ERROR: Characteristic with unknown type ${type}`);
 
-      this.chr = service.getHomeKitService().getCharacteristic(type) as Characteristic;
-      if (!this.chr) {
-        this.log.warn(`Warning: the characteristic ${type} may break compliance to homekit.`);
-        this.chr = service.getHomeKitService().addCharacteristic(CharType as unknown as new (...args: unknown[]) => Characteristic) as Characteristic;
-      }
+      // Pass the constructor so HAP looks up by UUID, not by displayName (which has spaces, e.g. "Target Position" ≠ "TargetPosition").
+      this.chr = service.getHomeKitService().getCharacteristic(CharType as unknown as WithUUID<new () => Characteristic>) as Characteristic;
       this.name = type;
     } else {
       throw { name: 'CONFIG ERROR', message: 'Custom characteristic not yet supported' };
