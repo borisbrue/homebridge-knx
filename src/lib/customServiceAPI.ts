@@ -189,6 +189,10 @@ export class CustomServiceAPI {
     if (chrKNX && !chrKNX.pseudo && this.serviceKNX.globs.knxconnection !== 'knxjs' && chrKNX.getDPT() === 'DPT5.001') {
       val = Number(val) * 100 / 255;
     }
+    // knxjs delivers DPT1 as boolean true/false; legacy handlers use strict === 0/1 comparisons.
+    if (typeof val === 'boolean') {
+      val = val ? 1 : 0;
+    }
     const oldValue = this.charValueList[characteristicName];
     this.handler.onKNXValueChange(characteristicName, oldValue, val);
     if (this.characteristicsList[characteristicName]?.pseudo) {
