@@ -1,0 +1,30 @@
+{
+  "spec_id": "SPEC-0001",
+  "runner": "pytest",
+  "started_at": "2026-05-18T23:28:57+00:00",
+  "duration_s": 0.011,
+  "exit_code": 0,
+  "tests": [
+    {
+      "test_id": "TST-0001",
+      "artifact": "contracts/behavior/plugin-hb2-kompatibilitaet.feature",
+      "status": "skipped",
+      "duration_s": 0.0,
+      "message": "Runner für .feature-Artefakte nicht unterstützt."
+    },
+    {
+      "test_id": "TST-0002",
+      "artifact": "contracts/behavior/build-erfolgreich.feature",
+      "status": "skipped",
+      "duration_s": 0.0,
+      "message": "Runner für .feature-Artefakte nicht unterstützt."
+    }
+  ],
+  "contract_coverage": {
+    "CON-0001": false,
+    "CON-0002": false
+  },
+  "passed": 0,
+  "failed": 0,
+  "skipped": 2
+}

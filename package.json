@@ -2,14 +2,18 @@
 	"name": "homebridge-knx",
 	"version": "0.3.28",
 	"description": "homebridge shim for KNX home automation.",
-	"main": "index.js",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"scripts": {
+		"build": "tsc",
+		"watch": "tsc -w",
+		"prepublishOnly": "npm run build",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "echo \"Error: configure and run homebridge to start\" && exit 1"
 	},
 	"engines": {
-		"node": ">10.0.0",
-		"homebridge": ">=0.4.28"
+		"node": ">=18.0.0",
+		"homebridge": "^2.0.0"
 	},
 	"repository": {
 		"type": "git",
@@ -29,6 +33,15 @@
 		"debug": "^4.1.1",
 		"eibd": "^0.5.0",
 		"knx": "^2.3.7"
+	},
+	"devDependencies": {
+		"@types/debug": "^4.1.13",
+		"@types/node": "^18.0.0",
+		"homebridge": "^2.0.0",
+		"typescript": "^5.0.0"
+	},
+	"peerDependencies": {
+		"homebridge": "^2.0.0"
 	},
 	"author": {
 		"name": "Raoul",

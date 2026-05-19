@@ -137,8 +137,7 @@ function registry(homebridgeAPI) {
 
 	globs.webdata = getServiceData(globs);
 
-	// third parameter dynamic = true
-	homebridgeAPI.registerPlatform("homebridge-knx", "KNX", KNXPlatform, true); //update signature for plugin-2
+	homebridgeAPI.registerPlatform("homebridge-knx", "KNX", KNXPlatform);
 }
 
 module.exports = registry;
@@ -156,11 +155,6 @@ module.exports = registry;
  */
 KNXPlatform.prototype.configureAccessory = function (accessory) {
 	console.log("Plugin - Configure Accessory: " + accessory.displayName + " --> Added to restoredAccessories[]");
-
-	// set the accessory to reachable if plugin can currently process the accessory
-	// otherwise set to false and update the reachability later by invoking
-	// accessory.updateReachability()
-	accessory.updateReachability(false);
 
 	// collect the accessories
 	globs.restoredAccessories.push(accessory);
@@ -333,12 +327,12 @@ KNXPlatform.prototype.configure = function () {
 					globs.debug(params.UUID);
 					var delAcc = getAccessoryByUUID(globs.restoredAccessories, params.UUID);
 					if (delAcc) {
-						globs.newAPI.unregisterPlatformAccessories(undefined, undefined, [delAcc]);
+						globs.newAPI.unregisterPlatformAccessories("homebridge-knx", "KNX", [delAcc]);
 						delAcc.UUID = "ERASED";
 					} else {
 						delAcc = getAccessoryByUUID(globs.devices, params.UUID);
 						if (delAcc) {
-							globs.newAPI.unregisterPlatformAccessories(undefined, undefined, [delAcc]);
+							globs.newAPI.unregisterPlatformAccessories("homebridge-knx", "KNX", [delAcc]);
 							delAcc.UUID = "ERASED";
 						}
 					}
