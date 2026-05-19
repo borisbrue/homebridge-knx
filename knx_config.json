@@ -38,6 +38,9 @@
                             "Set": [
                                 "2/3/46"
                             ],
+                            "Listen": [
+                                "2/3/46"
+                            ],
                             "DPT": "DPT5"
                         },
                         {
@@ -58,12 +61,10 @@
                         }
                     ],
                     "KNXReadRequests": [
-                        "2/3/26",
-                        "2/3/46"
+                        "2/3/26"
                     ],
                     "LocalConstants": {
-                        "SomeVariable_notUsedHere": "SomeValue",
-                        "OtherBlinds_notUsedHere": "OfficeShutter"
+                        "TimeOutSecs": 10
                     }
                 }
             ]
