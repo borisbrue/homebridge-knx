@@ -12,6 +12,7 @@
 	"scripts": {
 		"build": "tsc",
 		"watch": "tsc -w",
+		"prepare": "npm run build",
 		"prepublishOnly": "npm run build",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "echo \"Error: configure and run homebridge to start\" && exit 1"

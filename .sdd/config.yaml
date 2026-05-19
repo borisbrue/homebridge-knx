@@ -108,4 +108,4 @@ docker:
     max_lines: 500
 pwa:
   auth:
-    token: 77b3db6c41409e516ffc9770d518e78dc476598e15eb4c325b0a61b6e7dc30a3
+    token: eea17ef9a8a3f0721e9b8db52af7d6aa6fa8b076bf7ba3645877c75d53e31537

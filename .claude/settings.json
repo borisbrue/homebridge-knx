@@ -22,7 +22,10 @@
       "Bash(git -C /run/media/deck/SM512/Development/homebridge-knx status --short)",
       "Bash(git -C /run/media/deck/SM512/Development/homebridge-knx commit -m ' *)",
       "Bash(npm pack *)",
-      "Bash(git -C /run/media/deck/SM512/Development/homebridge-knx add package.json package-lock.json)"
+      "Bash(git -C /run/media/deck/SM512/Development/homebridge-knx add package.json package-lock.json)",
+      "Bash(npm run *)",
+      "Bash(/run/media/deck/SM512/Development/homebridge-knx/node_modules/.bin/tsc --version)",
+      "Bash(PATH=/var/config/nvm/versions/node/v24.15.0/bin:__TRACKED_VAR__ ./node_modules/.bin/tsc)"
     ]
   }
 }
