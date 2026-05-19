@@ -40,7 +40,7 @@ function groupsocketlisten(opts: { host: string; port: number }, callback: (pars
 
 function registerSingleGA(groupAddress: string, dpt: string, callback: (val: unknown, src: string, dest: string) => void): void {
   globs.debug(`INFO registerSingleGA ${groupAddress}`);
-  if (!(!globs.knxconnection) || globs.knxconnection === 'knxjs') {
+  if (globs.knxconnection === 'knxjs') {
     const dp = new knx.Datapoint({ ga: groupAddress, dpt, autoread: true });
     dp.on('event', (event, value) => {
       if (value !== undefined) callback(value, '', groupAddress);
@@ -59,7 +59,7 @@ function startMonitor(opts: { host: string; port: number }): void {
     return;
   }
 
-  if (!(!globs.knxconnection) || globs.knxconnection === 'knxjs') {
+  if (globs.knxconnection === 'knxjs') {
     const knxSubs = subscriptions as unknown as KnxDatapointSubscription[];
     const connection = knx.Connection({
       handlers: {

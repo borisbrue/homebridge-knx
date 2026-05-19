@@ -26,7 +26,7 @@ export function knxwrite(
   dpt: string,
   value: number,
 ): void {
-  if (!(!globs.knxconnection) || globs.knxconnection === 'knxjs') {
+  if (globs.knxconnection === 'knxjs') {
     const connection = knx.Connection({
       handlers: {
         connected() {
@@ -81,7 +81,7 @@ export function setBooleanState(value: unknown, callback: (() => void) | undefin
 export function setPercentage(value: number, callback: (() => void) | undefined, gaddress: string, reverseflag?: boolean): void {
   value = value >= 0 ? (value <= 100 ? value : 100) : 0;
   let numericValue: number;
-  if (!(!globs.knxconnection) || globs.knxconnection === 'knxjs') {
+  if (globs.knxconnection === 'knxjs') {
     numericValue = reverseflag ? 100 - value : value;
   } else {
     numericValue = reverseflag
@@ -113,7 +113,7 @@ export function setFloat(value: number, callback: (() => void) | undefined, gadd
 export function knxread(groupAddress: string | undefined): void {
   if (!groupAddress) return;
   globs.debug(`[knxdevice:knxread] preparing knx request for ${groupAddress}`);
-  if (!(!globs.knxconnection) || globs.knxconnection === 'knxjs') {
+  if (globs.knxconnection === 'knxjs') {
     knx.Connection({ handlers: { connected() { /* read not yet modeled in vendor types */ } } });
   } else {
     const knxdConnection = knxd.Connection();
@@ -184,7 +184,7 @@ export function writeValueHK(val: unknown, chrKNX: { getHomekitCharacteristic: (
         returnValue = numVal;
       } else {
         if (characteristic.props.unit === Units.PERCENTAGE) {
-          if (!(!globs.knxconnection) || globs.knxconnection === 'knxjs') {
+          if (globs.knxconnection === 'knxjs') {
             if (type === 'DPT5') numVal = reverse ? (255 - numVal) : numVal;
             else if (type === 'DPT5.001') numVal = reverse ? (100 - numVal) : numVal;
           } else if (type === 'DPT5' || type === 'DPT5.001') {
@@ -200,7 +200,7 @@ export function writeValueHK(val: unknown, chrKNX: { getHomekitCharacteristic: (
       break;
     case Formats.FLOAT: {
       if (characteristic.props.unit === Units.PERCENTAGE) {
-        if (!(!globs.knxconnection) || globs.knxconnection === 'knxjs') {
+        if (globs.knxconnection === 'knxjs') {
           if (type === 'DPT5') numVal = reverse ? (255 - numVal) : numVal;
           else if (type === 'DPT5.001') numVal = reverse ? (100 - numVal) : numVal;
         } else if (type === 'DPT5' || type === 'DPT5.001') {

@@ -44,7 +44,7 @@ class KNXPlatform {
     globs.restoredAccessories = [];
 
     globs.knxconnection = this.config.knxconnection;
-    globs.knxd_ip = this.config.knxd_ip ?? '';
+    globs.knxd_ip = this.config.knxd_ip ?? 'localhost';
     globs.knxd_port = this.config.knxd_port ?? 6720;
     globs.knxmonitor = knxmonitor;
     globs.readRequests = {};
