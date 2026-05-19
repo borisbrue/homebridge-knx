@@ -25,7 +25,15 @@
       "Bash(git -C /run/media/deck/SM512/Development/homebridge-knx add package.json package-lock.json)",
       "Bash(npm run *)",
       "Bash(/run/media/deck/SM512/Development/homebridge-knx/node_modules/.bin/tsc --version)",
-      "Bash(PATH=/var/config/nvm/versions/node/v24.15.0/bin:__TRACKED_VAR__ ./node_modules/.bin/tsc)"
+      "Bash(PATH=/var/config/nvm/versions/node/v24.15.0/bin:__TRACKED_VAR__ ./node_modules/.bin/tsc)",
+      "Bash(grep -E '\\\\.\\(ts|js|json\\)$')",
+      "Bash(node_modules/.bin/tsc)",
+      "Bash(ls /home/deck/.nvm/versions/ 2>/dev/null; ls /usr/local/lib/node* 2>/dev/null; find /home/deck -name \"node\" -type f 2>/dev/null | head -5; find /opt -name \"node\" -type f 2>/dev/null | head -3)",
+      "Read(//opt/**)",
+      "Bash(/home/deck/.var/app/com.visualstudio.code/config/nvm/versions/node/v24.15.0/bin/node /run/media/deck/SM512/Development/homebridge-knx/node_modules/.bin/tsc)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
     ]
   }
 }
