@@ -4,6 +4,11 @@
 	"description": "homebridge shim for KNX home automation.",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
+	"files": [
+		"dist/",
+		"lib/",
+		"index.js"
+	],
 	"scripts": {
 		"build": "tsc",
 		"watch": "tsc -w",
