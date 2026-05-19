@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node --check /run/media/deck/SM512/Development/homebridge-knx/index.js)",
+      "Bash(node --check /run/media/deck/SM512/Development/homebridge-knx/lib/knxdevice.js)",
+      "Bash(node --check /run/media/deck/SM512/Development/homebridge-knx/lib/knxaccess.js)",
+      "Bash(node --check /run/media/deck/SM512/Development/homebridge-knx/lib/knxmonitor.js)",
+      "Bash(which node18 *)",
+      "Read(//home/deck/.nvm/versions/**)",
+      "Read(//home/deck/**)",
+      "Read(//home/deck/.local/share/**)",
+      "Bash(/home/deck/.var/app/com.visualstudio.code/config/nvm/versions/node/v24.15.0/bin/node --check /run/media/deck/SM512/Development/homebridge-knx/index.js)",
+      "Bash(/home/deck/.var/app/com.visualstudio.code/config/nvm/versions/node/v24.15.0/bin/node --check /run/media/deck/SM512/Development/homebridge-knx/lib/knxdevice.js)",
+      "Bash(export PATH=\"/home/deck/.var/app/com.visualstudio.code/config/nvm/versions/node/v24.15.0/bin:$PATH\")",
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "Bash(sdd validate *)",
+      "Bash(git -C /run/media/deck/SM512/Development/homebridge-knx status)",
+      "Bash(git -C /run/media/deck/SM512/Development/homebridge-knx log --oneline -5)",
+      "Bash(git -C /run/media/deck/SM512/Development/homebridge-knx diff --stat HEAD)",
+      "Bash(git -C /run/media/deck/SM512/Development/homebridge-knx add .gitignore index.js lib/knxdevice.js package.json package-lock.json tsconfig.json AGENTS.md src/ .sdd/ contracts/)",
+      "Bash(git -C /run/media/deck/SM512/Development/homebridge-knx status --short)",
+      "Bash(git -C /run/media/deck/SM512/Development/homebridge-knx commit -m ' *)",
+      "Bash(npm pack *)",
+      "Bash(git -C /run/media/deck/SM512/Development/homebridge-knx add package.json package-lock.json)"
+    ]
+  }
+}
