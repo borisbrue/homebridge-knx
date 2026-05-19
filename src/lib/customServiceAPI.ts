@@ -32,10 +32,12 @@ export class CustomServiceAPI {
     const remoteHandlerPath = path.join(User.addinsPath(), `${handlerName}.js`);
 
     let Handler: (new (api: CustomServiceAPI) => HandlerPattern) | false = false;
+    let isLegacyHandler = false;
     if (fs.existsSync(localHandlerPath)) {
       Handler = require(localHandlerPath) as new (api: CustomServiceAPI) => HandlerPattern;
     } else if (fs.existsSync(legacyHandlerPath)) {
       Handler = require(legacyHandlerPath) as new (api: CustomServiceAPI) => HandlerPattern;
+      isLegacyHandler = true;
     } else if (fs.existsSync(remoteHandlerPath)) {
       process.env['handlerPattern'] = path.join(__dirname, '../addins/handlerpattern.js');
       Handler = require(remoteHandlerPath) as new (api: CustomServiceAPI) => HandlerPattern;
@@ -44,7 +46,13 @@ export class CustomServiceAPI {
     }
 
     this.handler = new Handler(this);
-    if (!(this.handler instanceof HandlerPattern)) {
+    // Legacy JS handlers extend lib/addins/handlerpattern.js, not dist/addins/handlerpattern.js.
+    // Since they are different module instances, instanceof against the compiled class fails.
+    // Use duck-typing for legacy handlers: check that the required methods exist.
+    const h = this.handler as unknown as Record<string, unknown>;
+    const hasDuckType = typeof h['onKNXValueChange'] === 'function' &&
+      typeof h['onHKValueChange'] === 'function';
+    if (!(this.handler instanceof HandlerPattern) && !hasDuckType) {
       throw new Error(`HANDLER CONFIGURATION ERROR: ${handlerName} is not an instance of HandlerPattern.`);
     }
 
