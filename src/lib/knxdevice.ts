@@ -40,7 +40,7 @@ export class KNXDevice {
     if (infoService) {
       infoService
         .setCharacteristic(globs.Characteristic.Manufacturer, config.Manufacturer ?? 'Opensource Community')
-        .setCharacteristic(globs.Characteristic.Model, config.Model ?? 'KNX Universal Device by snowdd1')
+        .setCharacteristic(globs.Characteristic.Model, config.Model ?? 'KNX Universal Device by borisbrue')
         .setCharacteristic(globs.Characteristic.SerialNumber, config.SerialNumber ?? `Build-${new Date().toLocaleString()}`);
     }
 
