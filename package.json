@@ -1,5 +1,5 @@
 {
-	"name": "homebridge-knx",
+	"name": "homebridge-knx-borisbrue",
 	"version": "0.3.28",
 	"description": "homebridge shim for KNX home automation.",
 	"main": "dist/index.js",

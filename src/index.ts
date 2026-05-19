@@ -208,5 +208,5 @@ export default function registry(homebridgeAPI: API): void {
   registerKnxThermostat(homebridgeAPI);
   globs.webdata = getServiceData(globs as PluginContext);
 
-  homebridgeAPI.registerPlatform('homebridge-knx', 'KNX', KNXPlatform as unknown as Parameters<API['registerPlatform']>[2]);
+  homebridgeAPI.registerPlatform('homebridge-knx-borisbrue', 'KNX', KNXPlatform as unknown as Parameters<API['registerPlatform']>[2]);
 }
